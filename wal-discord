@@ -1,0 +1,24 @@
+#!/bin/sh
+OUT_DIR="$HOME/.cache/wal-discord"
+OUT_FILE="$OUT_DIR/style.css"
+MASTER="$HOME/.config/wal-discord/master.scss"
+which sassc 2>&1 > /dev/null
+if [ ! $? -eq 0 ]; then
+	echo "sassc not found in path, aborting"
+	exit 1
+fi
+while getopts ":c" opt; do
+  case $opt in
+    c)
+	OUT_FILE="/dev/stdout"
+      ;;
+    \?)
+      echo "Invalid option: -$OPTARG" >&2
+      ;;
+  esac
+done
+if [ ! -r "$MASTER" ]; then
+	echo "couldn't find master scss file, please make sure you have run the setup first"
+fi
+sassc -I "$HOME/.cache/wal/" "$MASTER" "$OUT_FILE" 
+

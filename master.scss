@@ -1,0 +1,278 @@
+@import 'colors.scss';
+$bgDarker: mix($background, #000000, 90%);
+$dividerColor: mix($background, $color6, 90%);
+.theme-dark {
+    background-color: $background;
+    /* channels list + avatar */
+    .channels-Ie2l6A {
+        /* channel list */
+        > :first-child {
+            background-color: $bgDarker;
+            /*  make '#' in front of channels match text color */
+            .foreground-2W-aJk {
+                fill: $color5;
+            }
+            /* channels with unread messages */
+            .nameUnreadText-DfkrI4,
+            .nameUnreadVoice-EVo-wI {
+                color: $color5;
+            }
+            /* default channel */
+            .nameDefaultText-24KCy5,
+            .nameDefaultVoice-3WUH7s,
+            .nameLockedText-3pqQcL,
+            .nameLockedVoice-26MhB1 {
+                color: rgba($color5, 0.3);
+            }
+            /* channel group name */
+            .iconCollapsed-3hFp_8,
+            .iconDefault-3Gr8d2,
+            .nameCollapsed-34uFWo,
+            .nameDefault-2DI02H {
+                color: rgba($color5, 0.7);
+            }
+            /* muted channels */
+            .nameMutedText-3Vj4bM,
+            .nameMutedVoice-3oxyQZ {
+                color: rgba($color5, 0.15);
+            }
+            /* unread channels left dot */
+            .unread-1Dp-OI {
+                background: $color5;
+            }
+            /* box around select channel */
+            .contentSelectedText-3wUhMi {
+                background: rgba($color5, 0.2);
+            }
+            /* box on channel hover */
+            .contentHoveredText-2D9B-x,
+            .contentHoveredVoice-3p_NEO:active,
+            .contentSelectedVoice-1WDIBM:active {
+                background: rgba($color5, 0.1);
+            }
+        }
+        /* avatar container */
+        .container-2Thooq {
+            background-color: mix($background, #000000, 90%);
+            /* buttons */
+            .horizontal-1ae9ci button {
+                fill: $color6;
+            }
+        }
+    }
+    .chat {
+        >.content, // input form margins
+        form {
+            background-color: $background;
+        }
+        form {
+            // input form background
+            .inner-zqa7da {
+                background-color: rgba($color1, 0.1)
+            }
+            /* attachment button color */
+            .attachButtonPlus-rUdX-B {
+                fill: $color6;
+            }
+            /* messages - form separator */
+            box-shadow: 0 -1px 0 rgba($color3, 0.1);
+        }
+        /* "Load More Messages" button */
+        .has-more button {
+            background-color: $background;
+            border-color: rgba($color1, 0.4)
+        }
+    }
+    /* what contains all the messages */
+    .messages-wrapper {
+        /* divider is what displays the date for older messages */
+        .messages .divider {
+            &>span {
+                background-color: $background;
+            }
+            &:not(.red) div {
+                background: $dividerColor;
+            }
+            &:not(.red) span {
+                color: mix($background, $color6, 80%);
+            }
+            &.divider-red {
+                &>span {
+                    color: $color3;
+                }
+                &>div {
+                    background: $color3;
+                }
+            }
+        }
+        /* bar displayed at the top of the messages when there are unread ones */
+        .new-messages-bar {
+            background-color: rgba($color1, 0.9);
+        }
+        background-color: $background;
+    }
+    /* message group represents either a single message or 
+    consecutives messages from the same sender in a short period of time */
+    .message-group {
+        // message text
+        .comment {
+            .markup {
+                color: $foreground;
+                /* for code within single backquotes */
+                code.inline {
+                    background-color: mix($background, $color1, 85%)
+                }
+                /* for codeblocks (triple backquotes)*/
+                pre {
+                    code {
+                        background-color: mix($background, $color1, 90%);
+                    }
+                    border-color: $background;
+                }
+            }
+            /* embed cards */
+            .embedInner-1-fpTo {
+                background-color: mix($background, $color1, 90%);
+            }
+        }
+        .mentioned .message-text {
+            background-color: rgba($color6, 0.1);
+            &:after {
+                background: transparent;
+                border-left-color: $color4;
+            }
+        }
+        a {
+            &:visited {
+                color: $color1;
+            }
+            &:link {
+                color: $color3;
+            }
+        }
+    }
+    /* users list  */
+    .members-1998pB {
+        background-color: $bgDarker;
+    }
+    /* user typing message */
+    .typing-2GQL18 {
+        background-color: $background;
+    }
+    /* title bar */
+    .title-3qD0b- {
+        background-color: $bgDarker;
+        .search-bar {
+            background-color: rgba($color6, 0.2);
+        }
+    }
+    /* server list */
+    .guilds-wrapper {
+        background-color: $bgDarker;
+        .guilds-add {
+            border: 1px dashed rgba($color6, 0.3);
+            background: inherit;
+            color: rgba($color6, 0.4);
+        }
+        .guilds {
+            .guild .guild-inner {
+                background: inherit;
+            }
+            .guild.unread:before {
+                background: rgba($color5, 0.65);
+            }
+            /* n friends online */
+            .friends-online {
+                color: $color6;
+            }
+        }
+    }
+    /* server menu */
+    .menu-Sp6bN1 {
+        background: $background;
+        .separator-2zcjq8 {
+            background: $dividerColor;
+        }
+    }
+    /* pinned messages */
+    .messagesPopoutWrap-1MQ1bW {
+        background-color: $bgDarker;
+        /* header */
+        .header-ykumBX {
+            background: $background;
+        }
+        /* footer */
+        .footer-1kmXd4 {
+            background: $background;
+        }
+        /* pinned message view */
+        .messagesPopout-24nkyi .message-group {
+            @extend .message-group;
+            background-color: $background;
+        }
+    }
+    /* spinners */
+    .spinner-wandering-cubes .spinner-item {
+        background-color: $color1;
+    }
+    /* scrollbars */
+    .scroller-wrap .scroller {
+        &::-webkit-scrollbar-thumb,
+        &::-webkit-scrollbar-track-piece {
+            border-color: $dividerColor;
+        }
+        &::-webkit-scrollbar-thumb {
+            background-color: mix($background, $color1, 75%);
+        }
+        &::-webkit-scrollbar-track-piece {
+            background-color: $background;
+        }
+    }
+    /* DMs */
+    .private-channels {
+        /* box around selected chat */
+        .channel.selected a {
+            background: rgba($color5, 0.2);
+        }
+        /* box on hover */
+        .channel:hover a {
+            background: rgba($color5, 0.1);
+        }
+    }
+    /* friends tab */
+    #friends {
+        background-color: $background;
+        /* title bar */
+        .headerBar-UHpsPw {
+            background: $bgDarker;
+        }
+        .friends-table {
+            background-color: $background;
+            .friends-row:hover {
+                background-color: rgba($color5, 0.1);
+            }
+            .friends-row .friends-column-actions .friends-action {
+                background-color: rgba($color5, 0.1);
+            }
+            .friends-row .friends-column-actions .friends-action:hover {
+                background-color: rgba($color5, 0.2);
+            }
+        }
+    }
+    /* quick switcher (ctrl + k) */
+    .quickswitcher-3JagVE {
+        background-color: $background;
+        /* input */
+        .input-2VB9rf {
+            background-color: rgba($color1, 0.1);
+        }
+        /* focused search result */
+        .resultFocused-3aIoYe {
+            background-color: rgba($color5, 0.2);
+        }
+        .keybindShortcut-1BD6Z1 span {
+            background-color: $color3;
+            box-shadow: inset 0 -4px 0 rgba($color1, .6);
+        }
+    }
+}
