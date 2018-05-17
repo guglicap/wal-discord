@@ -44,10 +44,11 @@ init() {
         ln -sf $CONF_DIR/backend-wal.scss $CONF_DIR/backend.scss
     }
     OPTIND=1
-    while getopts 'hsb:' opt; do
+    while getopts 'hsb:o:' opt; do
         case "$opt" in
             h) usage;;
             s) out_file="";;
+            o) out_file="$OPTARG";;
             b) setbackend $OPTARG;;
         esac
     done
