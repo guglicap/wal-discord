@@ -39,6 +39,7 @@ backend=""
 out_file="$OUT_DIR/style.css"
 
 init() {
+    [[ ! -d $OUT_DIR ]] && mkdir -p $OUT_DIR
     [[ ! -d $CONF_DIR ]] && {        
         cp -R "`dirname $0`/config/" $CONF_DIR
         ln -sf $CONF_DIR/backend-wal.scss $CONF_DIR/backend.scss
