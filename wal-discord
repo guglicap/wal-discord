@@ -1,17 +1,65 @@
 #!/bin/bash
+
+# thanks to Sweets from which I copied some function
+# https://github.com/Sweets
+
+CONF_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/wal-discord"
+OUT_DIR="$HOME/.cache/wal-discord"
+
 usage() {
   cat << EOF
   wal-discord - generate custom discord css files based on pywal colors
     -h  Display this help.
-    -s  Output result to stdout. useful with xclip for usage with betterdiscord.
-    -b  Select backend to use. 
-        Supported backends are \'wal', \'haishoku'. Default is \'wal'.
+    -s  Output result to stdout.
+    -b  Select backend to use.
+        Supported backends by default are 'wal', 'haishoku'.
+        It can be any \$value as long as $CONF_DIR/backend-\$value.scss exists.
+        Default is 'wal'.
 EOF
-exit 0
+    exit 0
 }
+
+require() {
+    command -v "$1" &> /dev/null || {
+        echo "$1 is not installed and is required"
+        exit 1
+    }
+}
+
+
+setbackend() {
+    [[ ! -r $CONF_DIR/backend-$1.scss ]] && {
+        echo "Can't find backend $1"
+        exit 1
+    }
+    backend="$1"
+}
+
+backend=""
+out_file="$OUT_DIR/style.css"
 
 init() {
-  
+    [[ ! -d $CONF_DIR ]] && {        
+        cp -R "`dirname $0`/config/" $CONF_DIR
+        ln -sf $CONF_DIR/backend-wal.scss $CONF_DIR/backend.scss
+    }
+    OPTIND=1
+    while getopts 'hsb:' opt; do
+        case "$opt" in
+            h) usage;;
+            s) out_file="";;
+            b) setbackend $OPTARG;;
+        esac
+    done
 }
 
-
+init "$@"
+require sassc
+if [[ -z $backend ]]; then
+    sassc -I $HOME "$CONF_DIR/master.scss" $out_file
+else
+    sed \
+        "s/backend.scss/backend-$backend.scss/" \
+        "$CONF_DIR/master.scss" \
+        | sassc -s -I $HOME $out_file
+fi
