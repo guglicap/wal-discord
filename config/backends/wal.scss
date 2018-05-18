@@ -1,4 +1,4 @@
-@import '.cache/wal/colors.scss';
+@import 'colors.scss';
 $bg: $background;
 $bgDarker: mix($background, #000, 90%); // for sidebars and titlebars
 $colorUrgent: $color6; // for new messages notificatinons and the alike

@@ -13,7 +13,7 @@ usage() {
     -s  Output result to stdout.
     -b  Select backend to use.
         Supported backends by default are 'wal', 'haishoku'.
-        It can be any \$value as long as $CONF_DIR/backend-\$value.scss exists.
+        It can be any \$value as long as $CONF_DIR/backends/\$value.scss exists.
         Default is 'wal'.
 EOF
     exit 0
@@ -28,7 +28,7 @@ require() {
 
 
 setbackend() {
-    [[ ! -r $CONF_DIR/backend-$1.scss ]] && {
+    [[ ! -r $CONF_DIR/backends/$1.scss ]] && {
         echo "Can't find backend $1"
         exit 1
     }
@@ -39,10 +39,12 @@ backend=""
 out_file="$OUT_DIR/style.css"
 
 init() {
+    script_dir="$(dirname `readlink $0`)"
     [[ ! -d $OUT_DIR ]] && mkdir -p $OUT_DIR
-    [[ ! -d $CONF_DIR ]] && {        
-        cp -R "`dirname $0`/config/" $CONF_DIR
-        ln -sf $CONF_DIR/backend-wal.scss $CONF_DIR/backend.scss
+    [[ ! -d $CONF_DIR ]] && {
+        cp -R "$script_dir/config/" $CONF_DIR
+        ln -sf backends/wal.scss $CONF_DIR/backend.scss
+        ln -sf "$HOME/.cache/wal/colors.scss" "$CONF_DIR/colors.scss" 
     }
     OPTIND=1
     while getopts 'hsb:o:' opt; do
@@ -58,10 +60,10 @@ init() {
 init "$@"
 require sassc
 if [[ -z $backend ]]; then
-    sassc -I $HOME "$CONF_DIR/master.scss" $out_file
+    sassc -I $CONF_DIR "$CONF_DIR/master.scss" $out_file
 else
     sed \
-        "s/backend.scss/backend-$backend.scss/" \
-        "$CONF_DIR/master.scss" \
-        | sassc -s -I $HOME $out_file
+    "s backend.scss backends/$backend.scss " \
+    "$CONF_DIR/master.scss" \
+    | sassc -s -I $CONF_DIR $out_file
 fi
