@@ -57,6 +57,10 @@
                 fill: $colorAccent;
             }
         }
+        /* "New Unreads" */
+        .unread-1xRYoj {
+            background-color: rgba($colorUrgent, 0.75);
+        }
     }
     .chat {
         >.content, // input form margins
@@ -139,7 +143,7 @@
                 background: transparent;
                 border-left-color: $colorUrgent;
             }
-        }        
+        }
     }
     /* users list  */
     .members-1998pB {
@@ -263,6 +267,57 @@
         .keybindShortcut-1BD6Z1 span {
             background-color: $colorUrgent;
             box-shadow: inset 0 -4px 0 rgba($colorAccent, .6);
+        }
+    }
+    /* search popup with help */
+    .searchPopout-1vUlP3 {
+        background-color: $bgDarker;
+        /* background on hover */
+        .option-96V44q.selected-rZcOL- {
+            background-color: rgba($colorAccent, 0.1);
+        }
+    }
+    /* auto-complete popup when mentioning users */
+    .autocomplete-1vrmpx {
+        background-color: $bgDarker;
+        /* on hover */
+        .selectorSelected-1_M1WV {
+            background-color: rgba($colorAccent, 0.1);
+        }
+    }
+
+    /* pop-out when clicking on user */
+    .userPopout-3XzG_A {
+        /* header */
+        .headerPlaying-j0WQBV, .headerNormal-T_seeN {
+            background-color: $colorAccent;
+        }
+        .body-3iLsc4, .footer-1fjuF6 {
+            background-color: $bgDarker;
+        }
+        /* send dm from popout */
+        .quickMessage-1yeL4E {
+            background-color: rgba($colorAccent, 0.1);
+        }
+    }
+
+    /* right-click */
+    &.contextMenu-HLZMGh {
+        background-color: $bgDarker;
+        /* things like "Add Reaction" */
+        .itemSubMenu-1vN_Yn {
+            background-color: inherit;
+        }
+        /* divider */
+        .itemGroup-1tL0uz {
+            border-color: rgba($colorAccent, 0.05)
+        }
+        /* volume slider in user popup */
+        .bar-2Qqk5Z {
+            background-color: $bg;
+            .barFill-23-gu- {
+                background-color: $colorAccent;
+            }
         }
     }
 }
