@@ -1,69 +1,73 @@
-#!/bin/bash
-
+#!/usr/bin/env bash
+#
 # thanks to Sweets from which I copied some function
 # https://github.com/Sweets
 
-CONF_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/wal-discord"
-OUT_DIR="$HOME/.cache/wal-discord"
+CONF_DIR="${XDG_CONFIG_HOME:-${HOME}/.config}/wal-discord"
+OUT_DIR="${HOME}/.cache/wal-discord"
+
+backend=""
+out_file="${OUT_DIR}/style.css"
 
 usage() {
-  cat << EOF
-  wal-discord - generate custom discord css files based on pywal colors
-    -h  Display this help.
-    -s  Output result to stdout.
-    -b  Select backend to use.
-        Supported backends by default are 'wal', 'haishoku'.
-        It can be any \$value as long as $CONF_DIR/backends/\$value.scss exists.
-        Default is 'wal'.
-EOF
-    exit 0
+    printf "%s\\n" "\
+wal-discord - generate custom discord css files based on pywal colors
+-h  Display this help.
+-s  Output result to stdout.
+-b  Select backend to use.
+    Supported backends by default are 'wal', 'haishoku'.
+    It can be any \$value as long as $CONF_DIR/backends/\$value.scss exists.
+    Default is 'wal'.
+"
+    exit 1
 }
 
-require() {
-    command -v "$1" &> /dev/null || {
-        echo "$1 is not installed and is required"
-        exit 1
-    }
-}
-
-
-setbackend() {
-    [[ ! -r $CONF_DIR/backends/$1.scss ]] && {
-        echo "Can't find backend $1"
+set_backend() {
+    [[ ! -r "${CONF_DIR}/backends/${1}.scss" ]] && {
+        printf "%s\\n" "Can't find backend $1"
         exit 1
     }
     backend="$1"
 }
 
-backend=""
-out_file="$OUT_DIR/style.css"
-
 init() {
-    script_dir="$(dirname `readlink $0`)"
-    [[ ! -d $OUT_DIR ]] && mkdir -p $OUT_DIR
-    [[ ! -d $CONF_DIR ]] && {
-        cp -R "$script_dir/config/" $CONF_DIR
-        ln -sf backends/wal.scss $CONF_DIR/backend.scss
-        ln -sf "$HOME/.cache/wal/colors.scss" "$CONF_DIR/colors.scss" 
+    script_dir="$(dirname "$(readlink "$0")")"
+    mkdir -p "$OUT_DIR"
+
+    [[ ! -d "$CONF_DIR" ]] && {
+        cp -R "${script_dir}/config/" "$CONF_DIR"
+        ln -sf backends/wal.scss "${CONF_DIR}/backend.scss"
+        ln -sf "${HOME}/.cache/wal/colors.scss" "${CONF_DIR}/colors.scss"
     }
+
     OPTIND=1
     while getopts 'hsb:o:' opt; do
         case "$opt" in
             h) usage;;
             s) out_file="";;
-            o) out_file="$OPTARG";;
-            b) setbackend $OPTARG;;
+            o) out_file="$OPTARG" ;;
+            b) set_backend "$OPTARG" ;;
+            *) ;;
         esac
     done
 }
 
-init "$@"
-require sassc
-if [[ -z $backend ]]; then
-    sassc -I $CONF_DIR "$CONF_DIR/master.scss" $out_file
-else
-    sed \
-    "s backend.scss backends/$backend.scss " \
-    "$CONF_DIR/master.scss" \
-    | sassc -s -I $CONF_DIR $out_file
-fi
+main() {
+    init "$@"
+
+    type -p sassc &>/dev/null || {
+        printf "%s\\n" "$1 is not installed and is required"
+        exit 1
+    }
+
+    if [[ -z "$backend" ]]; then
+        sassc -I "$CONF_DIR" "${CONF_DIR}/master.scss" "$out_file"
+
+    else
+        sed "s backend.scss backends/$backend.scss " \
+            "${CONF_DIR}/master.scss" \
+            | sassc -s -I "$CONF_DIR" "$out_file"
+    fi
+}
+
+main "$@"
