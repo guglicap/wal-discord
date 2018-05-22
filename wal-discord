@@ -11,13 +11,13 @@ out_file="${OUT_DIR}/style.css"
 
 usage() {
     printf "%s\\n" "\
-wal-discord - generate custom discord css files based on pywal colors
+    wal-discord - generate custom discord css files based on pywal colors
 -h  Display this help.
 -s  Output result to stdout.
 -b  Select backend to use.
-    Supported backends by default are 'wal', 'haishoku'.
-    It can be any \$value as long as $CONF_DIR/backends/\$value.scss exists.
-    Default is 'wal'.
+Supported backends by default are 'wal', 'haishoku'.
+It can be any \$value as long as ${CONF_DIR}/backends/\$value.scss exists.
+Default is 'wal'.
 "
     exit 1
 }
