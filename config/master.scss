@@ -84,6 +84,9 @@
             background-color: $bg;
             border-color: transparent;
         }
+        .jump-to-present-bar {
+            background-color: rgba($colorAccent, 0.6);
+        }
     }
     /* what contains all the messages */
     .messages-wrapper {
@@ -203,6 +206,10 @@
         .messagesPopout-24nkyi .message-group {
             @extend .message-group;
             background-color: $bg;
+            /* jump */
+            .actionButtons-1sUUug .jumpButton-3DTcS_ {
+                background-color: rgba($colorAccent, 0.6);
+            }
         }
     }
     /* spinners */
@@ -318,6 +325,41 @@
             .barFill-23-gu- {
                 background-color: $colorAccent;
             }
+        }
+    }
+    /* search */
+    .search-results-wrap {
+        background-color: $bgDarker;
+        .search-header {
+            background-color: inherit;
+        }        
+        .channel-separator {
+            .channel-name {
+                background-color: $bgDarker;
+            }
+            &:before {
+                border-color: rgba($colorAccent, 0.2);
+            }
+        }
+        .search-result {
+            &:before, &:after {
+                background-image: linear-gradient(0deg,rgba($colorAccent, 0),$bgDarker);
+            }
+            &.expanded .search-result-message.hit {
+                background-color: $background;
+                border-bottom: 2px solid $background;
+                border-top: 2px solid $background;
+            }
+            .search-result-message.hit {
+                border: 2px solid $background;
+            }
+            .hit {                
+                background-color: $background;
+                box-shadow: 0 0 10px 6px $background; 
+            }
+        }
+        .action-buttons .jump-button {
+            background-color: rgba($colorAccent, 0.8);
         }
     }
 }
