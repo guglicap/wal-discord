@@ -82,7 +82,7 @@ main() {
     
     [[ $BD_THEME = true ]] && {
         result="$(printf "${BD_THEME_HEADER}\\n%s" "$result")"
-        [[ ! -z "$out_file" && -d "${CONFIG_HOME}/BetterDiscord/themes" ]] && {
+        [[ "$out_file" == "${OUT_DIR}/style.css" && -d "${CONFIG_HOME}/BetterDiscord/themes" ]] && {
             out_file="${CONFIG_HOME}/BetterDiscord/themes/wal_discord.theme.css"
         }
     }
