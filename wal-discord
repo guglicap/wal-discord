@@ -3,9 +3,13 @@
 # thanks to Sweets from which I copied some function
 # https://github.com/Sweets
 
-CONF_DIR="${XDG_CONFIG_HOME:-${HOME}/.config}/wal-discord"
+CONFIG_HOME="${XDG_CONFIG_HOME:-${HOME}/.config}"
+CONF_DIR="${CONFIG_HOME}/wal-discord"
 OUT_DIR="${HOME}/.cache/wal-discord"
 FORCE_UPDATE=false
+# generate BetterDiscord theme
+BD_THEME=false
+BD_THEME_HEADER='//META{"name":"wal-discord","description":"Generated based on pywal colors","author":"wal-discord","version":"1.0"}*//'
 
 backend=""
 out_file="${OUT_DIR}/style.css"
@@ -46,13 +50,14 @@ setup() {
 
 init() {
     OPTIND=1
-    while getopts 'hsub:o:' opt; do
+    while getopts 'hsutb:o:' opt; do
         case "$opt" in
             h) usage;;
-            s) out_file="/dev/stdout";;
+            s) out_file="";;
             o) out_file="$OPTARG" ;;
             b) set_backend "$OPTARG" ;;
             u) FORCE_UPDATE=true ;;
+            t) BD_THEME=true ;;
             *) ;;
         esac
     done
@@ -68,14 +73,26 @@ main() {
         exit 1
     }
     
-    if [[ -z "$backend" ]]; then
-        sassc -I "$CONF_DIR" "${CONF_DIR}/master.scss" "$out_file"
-        
+    local master="$(< ${CONF_DIR}/master.scss)"
+    [[ ! -z "$backend" ]] && {
+        master="${master/backend.scss/"backends/${backend}.scss"}"
+    }
+    
+    local result="$(sassc -I "$CONF_DIR" -s <<< $master)"
+    
+    [[ $BD_THEME = true ]] && {
+        result="$(printf "${BD_THEME_HEADER}\\n%s" "$result")"
+        [[ ! -z "$out_file" && -d "${CONFIG_HOME}/BetterDiscord/themes" ]] && {
+            out_file="${CONFIG_HOME}/BetterDiscord/themes/wal_discord.theme.css"
+        }
+    }
+    
+    if [[ ! -z "$out_file" ]]; then
+        printf "%s\\n" "$result" > "$out_file"
     else
-        sed "s backend.scss backends/$backend.scss " \
-        "${CONF_DIR}/master.scss" \
-        | sassc -s -I "$CONF_DIR" "$out_file"
+        printf "%s\\n" "$result"
     fi
+    
 }
 
 main "$@"
