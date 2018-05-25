@@ -44,7 +44,7 @@ init() {
     while getopts 'hsb:o:' opt; do
         case "$opt" in
             h) usage;;
-            s) out_file="";;
+            s) out_file="/dev/stdout";;
             o) out_file="$OPTARG" ;;
             b) set_backend "$OPTARG" ;;
             *) ;;
