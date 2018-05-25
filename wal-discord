@@ -5,6 +5,7 @@
 
 CONF_DIR="${XDG_CONFIG_HOME:-${HOME}/.config}/wal-discord"
 OUT_DIR="${HOME}/.cache/wal-discord"
+FORCE_UPDATE=false
 
 backend=""
 out_file="${OUT_DIR}/style.css"
@@ -18,7 +19,7 @@ usage() {
 Supported backends by default are 'wal', 'haishoku'.
 It can be any \$value as long as ${CONF_DIR}/backends/\$value.scss exists.
 Default is 'wal'.
-"
+    "
     exit 1
 }
 
@@ -30,43 +31,50 @@ set_backend() {
     backend="$1"
 }
 
-init() {
-    script_dir="$(dirname "$(readlink "$0")")"
-    mkdir -p "$OUT_DIR"
-
-    [[ ! -d "$CONF_DIR" ]] && {
-        cp -R "${script_dir}/config/" "$CONF_DIR"
-        ln -sf backends/wal.scss "${CONF_DIR}/backend.scss"
-        ln -sf "${HOME}/.cache/wal/colors.scss" "${CONF_DIR}/colors.scss"
+setup() {
+    local exec_path="$0"
+    [[ -L "$exec_path" ]] && exec_path="$(readlink "$0")"
+    local repo_dir="$(dirname "$exec_path")"
+    [[ ! -d "${repo_dir}/config" ]] && {
+        printf "%s\\n" "Can't find needed setup folder: ${repo_dir/config}"
+        exit 1
     }
+    cp -R "${repo_dir}/config/" "$CONF_DIR"
+    ln -sf backends/wal.scss "${CONF_DIR}/backend.scss"
+    ln -sf "${HOME}/.cache/wal/colors.scss" "${CONF_DIR}/colors.scss"
+}
 
+init() {
     OPTIND=1
-    while getopts 'hsb:o:' opt; do
+    while getopts 'hsub:o:' opt; do
         case "$opt" in
             h) usage;;
             s) out_file="/dev/stdout";;
             o) out_file="$OPTARG" ;;
             b) set_backend "$OPTARG" ;;
+            u) FORCE_UPDATE=true ;;
             *) ;;
         esac
     done
+    
+    [[ ! -d "$CONF_DIR" || $FORCE_UPDATE = true ]] && setup
 }
 
 main() {
     init "$@"
-
+    
     type -p sassc &>/dev/null || {
         printf "%s\\n" "$1 is not installed and is required"
         exit 1
     }
-
+    
     if [[ -z "$backend" ]]; then
         sassc -I "$CONF_DIR" "${CONF_DIR}/master.scss" "$out_file"
-
+        
     else
         sed "s backend.scss backends/$backend.scss " \
-            "${CONF_DIR}/master.scss" \
-            | sassc -s -I "$CONF_DIR" "$out_file"
+        "${CONF_DIR}/master.scss" \
+        | sassc -s -I "$CONF_DIR" "$out_file"
     fi
 }
 
