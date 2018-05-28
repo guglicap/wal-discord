@@ -88,6 +88,7 @@ main() {
     }
     
     if [[ ! -z "$out_file" ]]; then
+	    mkdir -p "$(dirname "$out_file")"
         printf "%s\\n" "$result" > "$out_file"
     else
         printf "%s\\n" "$result"
