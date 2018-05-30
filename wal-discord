@@ -38,7 +38,8 @@ set_backend() {
 setup() {
     local exec_path="$0"
     [[ -L "$exec_path" ]] && exec_path="$(readlink "$0")"
-    local repo_dir="$(dirname "$exec_path")"
+    local repo_dir
+    repo_dir="$(dirname "$exec_path")"
     [[ ! -d "${repo_dir}/config" ]] && {
         printf "%s\\n" "Can't find needed setup folder: ${repo_dir/config}"
         exit 1
@@ -73,12 +74,14 @@ main() {
         exit 1
     }
     
-    local master="$(< ${CONF_DIR}/master.scss)"
+    local master
+    master="$(< "${CONF_DIR}/master.scss")"
     [[ ! -z "$backend" ]] && {
         master="${master/backend.scss/"backends/${backend}.scss"}"
     }
     
-    local result="$(sassc -I "$CONF_DIR" -s <<< $master)"
+    local result
+    result="$(sassc -I "$CONF_DIR" -s <<< "$master")"
     
     [[ $BD_THEME = true ]] && {
         result="$(printf "${BD_THEME_HEADER}\\n%s" "$result")"
