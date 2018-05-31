@@ -49,6 +49,11 @@
                 background: rgba($colorAccent, 0.1);
             }
         }
+        /* voice connected */
+        .container-1UB9sr {
+            background-color: $bgDarker;
+            border-bottom: 1px solid rgba($colorAccent, 0.1);
+        }
         /* avatar container */
         .container-2Thooq {
             background-color: $bgDarker;
@@ -86,6 +91,10 @@
         }
         .jump-to-present-bar {
             background-color: rgba($colorAccent, 0.6);
+        }
+        /* edit message box */
+        .inner-zqa7da {
+            background-color: rgba($colorAccent, 0.1);
         }
     }
     /* what contains all the messages */
