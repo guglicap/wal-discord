@@ -67,8 +67,8 @@
             background-color: rgba($colorUrgent, 0.75);
         }
     }
-    .chat {
-        >.content, // input form margins
+    .chat, .chat-3bRxxu {
+        >.content, >.content-yTz4x3, // input form margins
         form {
             background-color: $bg;
         }
@@ -85,7 +85,7 @@
             box-shadow: 0 -1px 0 rgba($colorUrgent, 0.1);
         }
         /* "Load More Messages" button */
-        .has-more button {
+        .has-more button, .hasMore-3e72_v button {
             background-color: $bg;
             border-color: transparent;
         }
@@ -98,9 +98,9 @@
         }
     }
     /* what contains all the messages */
-    .messages-wrapper {
+    .messages-wrapper, .messagesWrapper-3lZDfY {
         /* divider is what displays the date for older messages */
-        .messages .divider {
+        .messages .divider, .divider-3gKybi {
             &>span {
                 background-color: $bg;
             }
@@ -120,255 +120,255 @@
             }
         }
         /* bar displayed at the top of the messages when there are unread ones */
-        .new-messages-bar {
+        .new-messages-bar, .newMessagesBar-mujexs {
             background-color: rgba($colorUrgent, 0.9);
         }
         background-color: $bg;
     }
     /* message group represents either a single message or 
     consecutives messages from the same sender in a short period of time */
-    .message-group {
-        // message text
-        .comment {
-            .markup {
-                color: $fg;
-                /* for code within single backquotes */
-                code.inline {
-                    background-color: mix($bg, $colorAccent, 85%)
-                }
-                /* for codeblocks (triple backquotes)*/
-                pre {
-                    code {
-                        background-color: mix($bg, $colorAccent, 90%);
-                    }
-                    border-color: $bg;
-                }
+.message-group {
+    // message text
+    .comment {
+        .markup, .markup-2BOw-j {
+            color: $fg;
+            /* for code within single backquotes */
+            code.inline {
+                background-color: mix($bg, $colorAccent, 85%)
             }
-            /* embed cards */
-            .embedInner-1-fpTo {
-                background-color: mix($bg, $colorAccent, 90%);
+            /* for codeblocks (triple backquotes)*/
+            pre {
+                code {
+                    background-color: mix($bg, $colorAccent, 90%);
+                }
+                border-color: $bg;
             }
         }
-        .mentioned .message-text {
-            background-color: rgba($colorUrgent, 0.1);
-            &:after {
-                background: transparent;
-                border-left-color: $colorUrgent;
-            }
+        /* embed cards */
+        .embedInner-1-fpTo {
+            background-color: mix($bg, $colorAccent, 90%);
         }
     }
-    /* users list  */
-    .members-1998pB {
-        background-color: $bgDarker;
+    .mentioned .message-text {
+        background-color: rgba($colorUrgent, 0.1);
+        &:after {
+            background: transparent;
+            border-left-color: $colorUrgent;
+        }
     }
-    /* user typing message */
-    .typing-2GQL18 {
+}
+/* users list  */
+.members-1998pB {
+    background-color: $bgDarker;
+}
+/* user typing message */
+.typing-2GQL18 {
+    background-color: $bg;
+}
+/* title bar */
+.title-3qD0b- {
+    background-color: $bgDarker;
+    .search-bar {
+        background-color: rgba($colorAccent, 0.2);
+    }
+}
+/* server list */
+.guilds-wrapper, .guildsWrapper-5TJh6A {
+    background-color: $bgDarker;
+    .guilds-add {
+        border: 1px dashed rgba($colorAccent, 0.3);
+        background: inherit;
+        color: rgba($colorAccent, 0.4);
+    }
+    .guilds, .guilds-1q_RqH {
+        .guild .guild-inner, .guild-1EfMGQ .guild-inner {
+            background: inherit;
+        }
+        .guild.unread:before, .guild-1EfMGQ.unread-qLkInr:before {
+            background: rgba($colorUrgent, 0.65);
+        }
+        /* n friends online */
+        .friends-online, .friendsOnline-_wi_fM {
+            color: $colorAccent;
+        }
+    }
+}
+/* server menu */
+.menu-Sp6bN1 {
+    background: $bg;
+    .separator-2zcjq8 {
+        background: rgba($colorAccent, 0.4);
+    }
+}
+/* pinned messages */
+.messagesPopoutWrap-1MQ1bW {
+    background-color: $bgDarker;
+    /* header */
+    .header-ykumBX {
+        background: $bg;
+    }
+    /* footer */
+    .footer-1kmXd4 {
+        background: $bg;
+    }
+    /* pinned message view */
+    .messagesPopout-24nkyi .message-group {
+        @extend .message-group;
+        background-color: $bg;
+        /* jump */
+        .actionButtons-1sUUug .jumpButton-3DTcS_ {
+            background-color: rgba($colorAccent, 0.6);
+        }
+    }
+}
+/* spinners */
+.spinner-wandering-cubes .spinner-item {
+    background-color: $colorAccent;
+}
+/* scrollbars */
+.scroller-wrap .scroller {
+    &::-webkit-scrollbar-thumb,
+    &::-webkit-scrollbar-track-piece {
+        border-color: rgba($colorAccent, 0.4);
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: mix($bg, $colorAccent, 75%);
+    }
+    &::-webkit-scrollbar-track-piece {
         background-color: $bg;
     }
+}
+/* DMs */
+.private-channels {
+    /* box around selected chat */
+    .channel.selected a {
+        background: rgba($colorAccent, 0.2);
+    }
+    /* box on hover */
+    .channel:hover a {
+        background: rgba($colorAccent, 0.1);
+    }
+}
+/* friends tab */
+#friends {
+    background-color: $bg;
     /* title bar */
-    .title-3qD0b- {
-        background-color: $bgDarker;
-        .search-bar {
+    .headerBar-UHpsPw {
+        background: $bgDarker;
+    }
+    .friends-table {
+        background-color: $bg;
+        .friends-row:hover {
+            background-color: rgba($colorAccent, 0.1);
+        }
+        .friends-row .friends-column-actions .friends-action {
+            background-color: rgba($colorAccent, 0.1);
+        }
+        .friends-row .friends-column-actions .friends-action:hover {
             background-color: rgba($colorAccent, 0.2);
         }
     }
-    /* server list */
-    .guilds-wrapper {
-        background-color: $bgDarker;
-        .guilds-add {
-            border: 1px dashed rgba($colorAccent, 0.3);
-            background: inherit;
-            color: rgba($colorAccent, 0.4);
-        }
-        .guilds {
-            .guild .guild-inner {
-                background: inherit;
-            }
-            .guild.unread:before {
-                background: rgba($colorUrgent, 0.65);
-            }
-            /* n friends online */
-            .friends-online {
-                color: $colorAccent;
-            }
-        }
+}
+/* quick switcher (ctrl + k) */
+.quickswitcher-3JagVE {
+    background-color: $bg;
+    /* input */
+    .input-2VB9rf {
+        background-color: rgba($colorAccent, 0.1);
     }
-    /* server menu */
-    .menu-Sp6bN1 {
-        background: $bg;
-        .separator-2zcjq8 {
-            background: rgba($colorAccent, 0.4);
-        }
+    /* focused search result */
+    .resultFocused-3aIoYe {
+        background-color: rgba($colorAccent, 0.2);
     }
-    /* pinned messages */
-    .messagesPopoutWrap-1MQ1bW {
-        background-color: $bgDarker;
-        /* header */
-        .header-ykumBX {
-            background: $bg;
-        }
-        /* footer */
-        .footer-1kmXd4 {
-            background: $bg;
-        }
-        /* pinned message view */
-        .messagesPopout-24nkyi .message-group {
-            @extend .message-group;
-            background-color: $bg;
-            /* jump */
-            .actionButtons-1sUUug .jumpButton-3DTcS_ {
-                background-color: rgba($colorAccent, 0.6);
-            }
-        }
+    .keybindShortcut-1BD6Z1 span {
+        background-color: $colorUrgent;
+        box-shadow: inset 0 -4px 0 rgba($colorAccent, .6);
     }
-    /* spinners */
-    .spinner-wandering-cubes .spinner-item {
+}
+/* search popup with help */
+.searchPopout-1vUlP3 {
+    background-color: $bgDarker;
+    /* background on hover */
+    .option-96V44q.selected-rZcOL- {
+        background-color: rgba($colorAccent, 0.1);
+    }
+}
+/* auto-complete popup when mentioning users */
+.autocomplete-1vrmpx {
+    background-color: $bgDarker;
+    /* on hover */
+    .selectorSelected-1_M1WV {
+        background-color: rgba($colorAccent, 0.1);
+    }
+}
+
+/* pop-out when clicking on user */
+.userPopout-3XzG_A {
+    /* header */
+    .headerPlaying-j0WQBV, .headerNormal-T_seeN {
         background-color: $colorAccent;
     }
-    /* scrollbars */
-    .scroller-wrap .scroller {
-        &::-webkit-scrollbar-thumb,
-        &::-webkit-scrollbar-track-piece {
-            border-color: rgba($colorAccent, 0.4);
-        }
-        &::-webkit-scrollbar-thumb {
-            background-color: mix($bg, $colorAccent, 75%);
-        }
-        &::-webkit-scrollbar-track-piece {
-            background-color: $bg;
-        }
-    }
-    /* DMs */
-    .private-channels {
-        /* box around selected chat */
-        .channel.selected a {
-            background: rgba($colorAccent, 0.2);
-        }
-        /* box on hover */
-        .channel:hover a {
-            background: rgba($colorAccent, 0.1);
-        }
-    }
-    /* friends tab */
-    #friends {
-        background-color: $bg;
-        /* title bar */
-        .headerBar-UHpsPw {
-            background: $bgDarker;
-        }
-        .friends-table {
-            background-color: $bg;
-            .friends-row:hover {
-                background-color: rgba($colorAccent, 0.1);
-            }
-            .friends-row .friends-column-actions .friends-action {
-                background-color: rgba($colorAccent, 0.1);
-            }
-            .friends-row .friends-column-actions .friends-action:hover {
-                background-color: rgba($colorAccent, 0.2);
-            }
-        }
-    }
-    /* quick switcher (ctrl + k) */
-    .quickswitcher-3JagVE {
-        background-color: $bg;
-        /* input */
-        .input-2VB9rf {
-            background-color: rgba($colorAccent, 0.1);
-        }
-        /* focused search result */
-        .resultFocused-3aIoYe {
-            background-color: rgba($colorAccent, 0.2);
-        }
-        .keybindShortcut-1BD6Z1 span {
-            background-color: $colorUrgent;
-            box-shadow: inset 0 -4px 0 rgba($colorAccent, .6);
-        }
-    }
-    /* search popup with help */
-    .searchPopout-1vUlP3 {
+    .body-3iLsc4, .footer-1fjuF6 {
         background-color: $bgDarker;
-        /* background on hover */
-        .option-96V44q.selected-rZcOL- {
-            background-color: rgba($colorAccent, 0.1);
-        }
     }
-    /* auto-complete popup when mentioning users */
-    .autocomplete-1vrmpx {
-        background-color: $bgDarker;
-        /* on hover */
-        .selectorSelected-1_M1WV {
-            background-color: rgba($colorAccent, 0.1);
-        }
+    /* send dm from popout */
+    .quickMessage-1yeL4E {
+        background-color: rgba($colorAccent, 0.1);
     }
+}
 
-    /* pop-out when clicking on user */
-    .userPopout-3XzG_A {
-        /* header */
-        .headerPlaying-j0WQBV, .headerNormal-T_seeN {
+/* right-click */
+&.contextMenu-HLZMGh {
+    background-color: $bgDarker;
+    /* things like "Add Reaction" */
+    .itemSubMenu-1vN_Yn {
+        background-color: inherit;
+    }
+    /* divider */
+    .itemGroup-1tL0uz {
+        border-color: rgba($colorAccent, 0.05)
+    }
+    /* volume slider in user popup */
+    .bar-2Qqk5Z {
+        background-color: $bg;
+        .barFill-23-gu- {
             background-color: $colorAccent;
         }
-        .body-3iLsc4, .footer-1fjuF6 {
+    }
+}
+/* search */
+.search-results-wrap {
+    background-color: $bgDarker;
+    .search-header {
+        background-color: inherit;
+    }        
+    .channel-separator {
+        .channel-name {
             background-color: $bgDarker;
         }
-        /* send dm from popout */
-        .quickMessage-1yeL4E {
-            background-color: rgba($colorAccent, 0.1);
+        &:before {
+            border-color: rgba($colorAccent, 0.2);
         }
     }
-
-    /* right-click */
-    &.contextMenu-HLZMGh {
-        background-color: $bgDarker;
-        /* things like "Add Reaction" */
-        .itemSubMenu-1vN_Yn {
-            background-color: inherit;
+    .search-result {
+        &:before, &:after {
+            background-image: linear-gradient(0deg,rgba($colorAccent, 0),$bgDarker);
         }
-        /* divider */
-        .itemGroup-1tL0uz {
-            border-color: rgba($colorAccent, 0.05)
+        &.expanded .search-result-message.hit {
+            background-color: $background;
+            border-bottom: 2px solid $background;
+            border-top: 2px solid $background;
         }
-        /* volume slider in user popup */
-        .bar-2Qqk5Z {
-            background-color: $bg;
-            .barFill-23-gu- {
-                background-color: $colorAccent;
-            }
+        .search-result-message.hit {
+            border: 2px solid $background;
+        }
+        .hit {                
+            background-color: $background;
+            box-shadow: 0 0 10px 6px $background; 
         }
     }
-    /* search */
-    .search-results-wrap {
-        background-color: $bgDarker;
-        .search-header {
-            background-color: inherit;
-        }        
-        .channel-separator {
-            .channel-name {
-                background-color: $bgDarker;
-            }
-            &:before {
-                border-color: rgba($colorAccent, 0.2);
-            }
-        }
-        .search-result {
-            &:before, &:after {
-                background-image: linear-gradient(0deg,rgba($colorAccent, 0),$bgDarker);
-            }
-            &.expanded .search-result-message.hit {
-                background-color: $background;
-                border-bottom: 2px solid $background;
-                border-top: 2px solid $background;
-            }
-            .search-result-message.hit {
-                border: 2px solid $background;
-            }
-            .hit {                
-                background-color: $background;
-                box-shadow: 0 0 10px 6px $background; 
-            }
-        }
-        .action-buttons .jump-button {
-            background-color: rgba($colorAccent, 0.8);
-        }
+    .action-buttons .jump-button {
+        background-color: rgba($colorAccent, 0.8);
     }
+}
 }
