@@ -70,14 +70,16 @@ main() {
     init "$@"
     
     type -p sassc &>/dev/null || {
-        printf "%s\\n" "$1 is not installed and is required"
+        printf "%s\\n" "sassc is not installed and is required"
         exit 1
     }
     
     local master
     master="$(< "${CONF_DIR}/master.scss")"
     [[ ! -z "$backend" ]] && {
-        master="${master/backend.scss/"backends/${backend}.scss"}"
+        local bp
+        bp="backends/${backend}.scss"
+        master="${master/backend.scss/$bp}"
     }
     
     local result
