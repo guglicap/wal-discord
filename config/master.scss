@@ -226,7 +226,7 @@
     background-color: $colorAccent;
 }
 /* scrollbars */
-.scroller-wrap .scroller {
+.scroller-wrap .scroller, .scroller-wrap .scroller-2FKFPG {
     &::-webkit-scrollbar-thumb,
     &::-webkit-scrollbar-track-piece {
         border-color: rgba($colorAccent, 0.4);
@@ -250,22 +250,26 @@
     }
 }
 /* friends tab */
-#friends {
+#friends, .container-3gCOGc {
     background-color: $bg;
     /* title bar */
     .headerBar-UHpsPw {
         background: $bgDarker;
     }
-    .friends-table {
+    .friends-table, .friendsTable-133bsv {
         background-color: $bg;
-        .friends-row:hover {
+        .friends-row:hover, .friendsRow-2yicud:hover {
             background-color: rgba($colorAccent, 0.1);
         }
-        .friends-row .friends-column-actions .friends-action {
-            background-color: rgba($colorAccent, 0.1);
+        .friends-row , .friendsRow-2yicud {
+            .friends-column-actions .friends-action {
+                background-color: rgba($colorAccent, 0.1);
+            }
         }
-        .friends-row .friends-column-actions .friends-action:hover {
-            background-color: rgba($colorAccent, 0.2);
+        .friends-row , .friendsRow-2yicud {
+            .friends-column-actions .friends-action:hover {
+                background-color: rgba($colorAccent, 0.2);
+            }
         }
     }
 }
