@@ -6,6 +6,11 @@
 CONFIG_HOME="${XDG_CONFIG_HOME:-${HOME}/.config}"
 CONF_DIR="${CONFIG_HOME}/wal-discord"
 OUT_DIR="${HOME}/.cache/wal-discord"
+
+declare -a COLOR_DIR
+COLOR_DIR[PYWAL]="${HOME}/.cache/wal/colors.scss"
+COLOR_DIR[WPGTK]="${HOME}/.config/wpg/formats/colors.scss"
+
 FORCE_UPDATE=false
 # generate BetterDiscord theme
 BD_THEME=false
@@ -44,9 +49,29 @@ setup() {
         printf "%s\\n" "Can't find needed setup folder: ${repo_dir/config}"
         exit 1
     }
+    	printf "Would you like to configure wal-discord for Pywal or WPGTK?\n" 
+	read -p "[Pywal/wpgtk]: " init_choice
+    	while true
+		do
+			case "$init_choice" in
+			[pP]|[pP][yY][wW][aA][lL])
+				set COLOR_DIR=PYWAL
+				break ;;
+			
+			[wW]|[wW][pP][gG][tT][kK])
+				set COLOR_DIR=WPGTK
+				break ;;
+			
+			* )
+				printf "Invalid choice, defaulting to Pywal.\n" 
+				set COLOR_DIR=PYWAL
+				break ;;	
+		esac
+	done
+
     cp -R "${repo_dir}/config/" "$CONF_DIR"
     ln -sf backends/wal.scss "${CONF_DIR}/backend.scss"
-    ln -sf "${HOME}/.cache/wal/colors.scss" "${CONF_DIR}/colors.scss"
+    ln -sf $COLOR_DIR "${CONF_DIR}/colors.scss" 
 }
 
 init() {
@@ -59,7 +84,7 @@ init() {
             b) set_backend "$OPTARG" ;;
             u) FORCE_UPDATE=true ;;
             t) BD_THEME=true ;;
-            *) ;;
+	    *) ;;
         esac
     done
     
