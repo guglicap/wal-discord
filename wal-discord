@@ -84,7 +84,7 @@ init() {
             b) set_backend "$OPTARG" ;;
             u) FORCE_UPDATE=true ;;
             t) BD_THEME=true ;;
-	    *) ;;
+            *) ;;
         esac
     done
     
