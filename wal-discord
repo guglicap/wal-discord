@@ -10,7 +10,6 @@ FORCE_UPDATE=false
 # generate BetterDiscord theme
 BD_THEME=false
 BD_THEME_HEADER='//META{"name":"wal-discord","description":"Generated based on pywal colors","author":"wal-discord","version":"1.0"}*//'
-colordir=""
 backend=""
 out_file="${OUT_DIR}/style.css"
 
@@ -63,7 +62,7 @@ init() {
             b) set_backend "$OPTARG" ;;
             u) FORCE_UPDATE=true ;;
             t) BD_THEME=true ;;
-	    c) colordir="$OPTARG" ;;
+            c) colordir="$OPTARG" ;;
             *) ;;
         esac
     done
@@ -96,6 +95,7 @@ main() {
             out_file="${CONFIG_HOME}/BetterDiscord/themes/wal_discord.theme.css"
         }
     }
+
     [[ ! -z "$colordir" ]] && {
         [[ -r "${CONF_DIR}/colors.scss" ]] && {
            rm "${CONF_DIR}/colors.scss"
