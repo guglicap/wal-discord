@@ -62,7 +62,7 @@ init() {
             b) set_backend "$OPTARG" ;;
             u) FORCE_UPDATE=true ;;
             t) BD_THEME=true ;;
-            c) colordir="$OPTARG" ;;
+            c) colorFile="$OPTARG" ;;
             *) ;;
         esac
     done
@@ -96,11 +96,8 @@ main() {
         }
     }
 
-    [[ ! -z "$colordir" ]] && {
-        [[ -r "${CONF_DIR}/colors.scss" ]] && {
-           rm "${CONF_DIR}/colors.scss"
-        }
-        ln -sf "$colordir" "${CONF_DIR}/colors.scss"
+    [[ ! -z "$colorFile" ]] && {
+        ln -sf "$colorFile" "${CONF_DIR}/colors.scss"
     }
 
     if [[ ! -z "$out_file" ]]; then
