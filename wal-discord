@@ -80,7 +80,7 @@ main() {
     
     local master
     master="$(< "${CONF_DIR}/master.scss")"
-    [[ ! -n "$backend" ]] && {
+    [[ -n "$backend" ]] && {
         local bp
         bp="backends/${backend}.scss"
         master="${master/backend.scss/$bp}"
@@ -96,11 +96,11 @@ main() {
         }
     }
 
-    [[ ! -n "$colorFile" ]] && {
+    [[ -n "$colorFile" ]] && {
         ln -sf "$colorFile" "${CONF_DIR}/colors.scss"
     }
 
-    if [[ ! -n "$out_file" ]]; then
+    if [[ -n "$out_file" ]]; then
 	    mkdir -p "$(dirname "$out_file")"
         printf "%s\\n" "$result" > "$out_file"
     else
