@@ -20,12 +20,12 @@ Supports BeautifulDiscord and BetterDiscord.
 I know this isn't that big of a project, but if you feel like it, a donation is always much appreciated :)
 
 #### BTC
-![QR](https://raw.githubusercontent.com/guglicap/wal-discord/master/images/btc_address.png)  
+![QR](https://raw.githubusercontent.com/guglicap/wal-discord/master/images/btc_address.png)
 
 12xvkC25eKH11NbFzS4PHf3P6nHHr2UVkA
 
 <br></br>
 #### ETH
-![QR](https://raw.githubusercontent.com/guglicap/wal-discord/master/images/eth_address.png)  
+![QR](https://raw.githubusercontent.com/guglicap/wal-discord/master/images/eth_address.png)
 
 0x21F283DfCD2aD6Fce5115A305A466b772F2aC9e9

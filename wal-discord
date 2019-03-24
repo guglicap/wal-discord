@@ -10,6 +10,8 @@ FORCE_UPDATE=false
 # generate BetterDiscord theme
 BD_THEME=false
 BD_THEME_HEADER='//META{"name":"wal-discord","description":"Generated based on pywal colors","author":"wal-discord","version":"1.0"}*//'
+# generate firefox userContent.css
+FIREFOX_CSS=false
 
 backend=""
 out_file="${OUT_DIR}/style.css"
@@ -17,13 +19,17 @@ out_file="${OUT_DIR}/style.css"
 usage() {
     printf "%s\\n" "\
     wal-discord - generate custom discord css files based on pywal colors
--h  Display this help.
--s  Output result to stdout.
--b  Select backend to use.
-Supported backends by default are 'wal', 'haishoku'.
-It can be any \$value as long as ${CONF_DIR}/backends/\$value.scss exists.
-Default is 'wal'.
-    "
+        -h  Display this help.
+        -s  Output result to stdout.
+        -b  Select backend to use.
+            Supported backends by default are 'wal', 'haishoku'.
+            It can be any \$value as long as ${CONF_DIR}/backends/\$value.scss exists.
+            Default is 'wal'.
+        -o  Set output file. Defaults to $out_file
+        -t  Generate BetterDiscord theme.
+        -x  Generate firefox userContent.css
+        -u  Forces wal-discord update.\
+        "
     exit 1
 }
 
@@ -49,9 +55,26 @@ setup() {
     ln -sf "${HOME}/.cache/wal/colors.scss" "${CONF_DIR}/colors.scss"
 }
 
+generate_firefox_css() {
+    result="$(sed -re 's/^([^;]+);/\1 !important;/g' <<< "$1")"
+    result="$(printf "@-moz-document domain(discordapp.com) {\\n%s\\n}" "$result")"
+    
+    [[ "$out_file" == "${OUT_DIR}/style.css" ]] || return
+    
+    profiles=(${HOME}/.mozilla/firefox/*.default)
+    [[ -z "${profiles[0]}" ]] && {
+        printf "%s\n" "No firefox profile found! Aborting."
+        exit 1
+    }
+    
+    OUT_DIR="${profiles[0]}/chrome"
+    mkdir -p "$OUT_DIR"
+    out_file="${OUT_DIR}/userContent.css"
+}
+
 init() {
     OPTIND=1
-    while getopts 'hsutb:o:' opt; do
+    while getopts 'hsutxb:o:' opt; do
         case "$opt" in
             h) usage;;
             s) out_file="";;
@@ -59,6 +82,7 @@ init() {
             b) set_backend "$OPTARG" ;;
             u) FORCE_UPDATE=true ;;
             t) BD_THEME=true ;;
+            x) FIREFOX_CSS=true ;;
             *) ;;
         esac
     done
@@ -83,7 +107,7 @@ main() {
     }
     
     local result
-    result="$(sassc -I "$CONF_DIR" -s <<< "$master")"
+    result="$(sassc -t expanded -I "$CONF_DIR" -s <<< "$master")"
     
     [[ $BD_THEME = true ]] && {
         result="$(printf "${BD_THEME_HEADER}\\n%s" "$result")"
@@ -91,6 +115,8 @@ main() {
             out_file="${CONFIG_HOME}/BetterDiscord/themes/wal_discord.theme.css"
         }
     }
+    
+    [[ $FIREFOX_CSS = true ]] && generate_firefox_css "$result"
     
     if [[ ! -z "$out_file" ]]; then
 	    mkdir -p "$(dirname "$out_file")"

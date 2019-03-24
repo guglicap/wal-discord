@@ -125,7 +125,7 @@
         }
         background-color: $bg;
     }
-    /* message group represents either a single message or 
+    /* message group represents either a single message or
     consecutives messages from the same sender in a short period of time */
 .message-group {
     // message text
@@ -345,7 +345,7 @@
     background-color: $bgDarker;
     .search-header {
         background-color: inherit;
-    }        
+    }
     .channel-separator {
         .channel-name {
             background-color: $bgDarker;
@@ -366,9 +366,9 @@
         .search-result-message.hit {
             border: 2px solid $background;
         }
-        .hit {                
+        .hit {
             background-color: $background;
-            box-shadow: 0 0 10px 6px $background; 
+            box-shadow: 0 0 10px 6px $background;
         }
     }
     .action-buttons .jump-button {
