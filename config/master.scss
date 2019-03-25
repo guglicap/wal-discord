@@ -67,6 +67,20 @@
             background-color: rgba($colorUrgent, 0.75);
         }
     }
+
+    .scrollbar-2rkZSL {
+        background-color: $bgDarker;
+        .track-1JN30G {
+            background-color: $bgDarker;
+        }
+        .pad-29zQak {
+            background-color: $bgDarker;
+        }
+        .thumb-2JwNFC {
+            background-color: rgba($colorAccent, 0.1);
+        }
+    }
+
     .chat, .chat-3bRxxu {
         >.content, >.content-yTz4x3, // input form margins
         form {
@@ -173,25 +187,26 @@
     }
 }
 /* server list */
-.guilds-wrapper, .guildsWrapper-5TJh6A {
+.guilds-wrapper, .guildsWrapper-5TJh6A, .wrapper-1Rf91z {
     background-color: $bgDarker;
-    .guilds-add {
+    .guilds-add, .circleIconButton-jET_ig {
         border: 1px dashed rgba($colorAccent, 0.3);
         background: inherit;
         color: rgba($colorAccent, 0.4);
     }
-    .guilds, .guilds-1q_RqH {
-        .guild .guild-inner, .guild-1EfMGQ .guild-inner {
+    .guilds, .guilds-1q_RqH, .scrollerWrap-2lJEkd {
+        .guild .guild-inner, .guild-1EfMGQ .guild-inner, .container-2td-dC .wrapper-2lTRaf {
             background: inherit;
         }
-        .guild.unread:before, .guild-1EfMGQ.unread-qLkInr:before {
+        .guild.unread:before, .guild-1EfMGQ.unread-qLkInr:before, .wrapper-232cHJ {
             background: rgba($colorUrgent, 0.65);
         }
-        /* n friends online */
-        .friends-online, .friendsOnline-_wi_fM {
-            color: $colorAccent;
-        }
     }
+}
+
+/* n friends online */
+.friends-online, .friendsOnline-_wi_fM, .friendsOnline-2JkivW {
+    color: $colorAccent;
 }
 /* server menu */
 .menu-Sp6bN1 {
@@ -226,7 +241,7 @@
     background-color: $colorAccent;
 }
 /* scrollbars */
-.scroller-wrap .scroller, .scroller-wrap .scroller-2FKFPG {
+.scroller-wrap .scroller, .scroller-wrap .scroller-2FKFPG, .scrollerThemed-2oenus.themedWithTrack-q8E3vB .scroller-2FKFPG {
     &::-webkit-scrollbar-thumb,
     &::-webkit-scrollbar-track-piece {
         border-color: rgba($colorAccent, 0.4);
@@ -239,13 +254,13 @@
     }
 }
 /* DMs */
-.private-channels {
+.private-channels, .privateChannels-1nO12o {
     /* box around selected chat */
-    .channel.selected a {
+    .channel.selected a, .channel-2QD9_O.selected-1HYmZZ a {
         background: rgba($colorAccent, 0.2);
     }
     /* box on hover */
-    .channel:hover a {
+    .channel:hover a, .channel-2QD9_O:hover a {
         background: rgba($colorAccent, 0.1);
     }
 }
