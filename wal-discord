@@ -55,8 +55,7 @@ setup() {
     ln -sf "${HOME}/.cache/wal/colors.scss" "${CONF_DIR}/colors.scss"
 }
 
-generate_firefox_css() {
-    result="$(sed -re 's/^([^;]+);/\1 !important;/g' <<< "$1")"
+generate_firefox_css() {    
     result="$(printf "@-moz-document domain(discordapp.com) {\\n%s\\n}" "$result")"
     
     [[ "$out_file" == "${OUT_DIR}/style.css" ]] || return
