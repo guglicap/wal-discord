@@ -129,7 +129,7 @@ main() {
 
     [[ $FIREFOX_CSS = true ]] && generate_firefox_css "$result"
     
-    if [[ ! -z "$out_file" ]]; then
+    if [[ -n "$out_file" ]]; then
 	    mkdir -p "$(dirname "$out_file")"
         printf "%s\\n" "$result" > "$out_file"
     else
