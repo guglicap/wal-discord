@@ -6,6 +6,8 @@
 CONFIG_HOME="${XDG_CONFIG_HOME:-${HOME}/.config}"
 CONF_DIR="${CONFIG_HOME}/wal-discord"
 OUT_DIR="${HOME}/.cache/wal-discord"
+WAL_COLORS="${HOME}/.cache/wal/colors.scss"
+WPG_COLORS="${HOME}/.config/wpg/formats/colors.scss"
 FORCE_UPDATE=false
 # generate BetterDiscord theme
 BD_THEME=false
@@ -21,7 +23,6 @@ usage() {
 -o  Output results to specified file location.
 -u  Force update of config files.
 -t  Generate BetterDiscord theme.
--c  Change the source colors file. 
 -b  Select backend to use.
 Supported backends by default are 'wal', 'haishoku'.
 It can be any \$value as long as ${CONF_DIR}/backends/\$value.scss exists.
@@ -49,7 +50,18 @@ setup() {
     }
     cp -R "${repo_dir}/config/" "$CONF_DIR"
     ln -sf backends/wal.scss "${CONF_DIR}/backend.scss"
-    ln -sf "${HOME}/.cache/wal/colors.scss" "${CONF_DIR}/colors.scss"
+
+    if [[ -r "$WAL_COLORS" ]] && [[ -r "$WPG_COLORS" ]]; then	    
+        if [[ "$WAL_COLORS" -ot "$WPG_COLORS" ]]; then
+           	ln -sf "$WAL_COLORS" "${CONF_DIR}/colors.scss"
+        else
+            ln -sf "$WPG_COLORS" "${CONF_DIR}/colors.scss"
+        fi
+    elif [[ -r "$WPG_COLORS" ]]; then
+        ln -sf "$WPG_COLORS" "${CONF_DIR}/colors.scss"
+    else
+        ln -sf "$WAL_COLORS" "${CONF_DIR}/colors.scss"
+    fi
 }
 
 init() {
@@ -62,7 +74,6 @@ init() {
             b) set_backend "$OPTARG" ;;
             u) FORCE_UPDATE=true ;;
             t) BD_THEME=true ;;
-            c) colorFile="$OPTARG" ;;
             *) ;;
         esac
     done
@@ -94,10 +105,6 @@ main() {
         [[ "$out_file" == "${OUT_DIR}/style.css" && -d "${CONFIG_HOME}/BetterDiscord/themes" ]] && {
             out_file="${CONFIG_HOME}/BetterDiscord/themes/wal_discord.theme.css"
         }
-    }
-
-    [[ -n "$colorFile" ]] && {
-        ln -sf "$colorFile" "${CONF_DIR}/colors.scss"
     }
 
     if [[ -n "$out_file" ]]; then
