@@ -6,13 +6,14 @@
 CONFIG_HOME="${XDG_CONFIG_HOME:-${HOME}/.config}"
 CONF_DIR="${CONFIG_HOME}/wal-discord"
 OUT_DIR="${HOME}/.cache/wal-discord"
+WAL_COLORS="${HOME}/.cache/wal/colors.scss"
+WPG_COLORS="${HOME}/.config/wpg/formats/colors.scss"
 FORCE_UPDATE=false
 # generate BetterDiscord theme
 BD_THEME=false
 BD_THEME_HEADER='//META{"name":"wal-discord","description":"Generated based on pywal colors","author":"wal-discord","version":"1.0"}*//'
 # generate firefox userContent.css
 FIREFOX_CSS=false
-
 backend=""
 out_file="${OUT_DIR}/style.css"
 
@@ -52,7 +53,16 @@ setup() {
     }
     cp -R "${repo_dir}/config/" "$CONF_DIR"
     ln -sf backends/wal.scss "${CONF_DIR}/backend.scss"
-    ln -sf "${HOME}/.cache/wal/colors.scss" "${CONF_DIR}/colors.scss"
+
+    local colors="$WAL_COLORS"
+    
+    # we assume we're using wpgtk if wal colors file doesn't exist
+    [[ ! -r "$WAL_COLORS" ]] && colors="$WPG_COLORS"
+    
+    # only returns true if both files exist
+    [[ "$WPG_COLORS" -nt "$WAL_COLORS" ]] && colors="$WPG_COLORS"
+    
+    ln -sf "$colors" "${CONF_DIR}/colors.scss"
 }
 
 generate_firefox_css() {    
@@ -99,7 +109,7 @@ main() {
     
     local master
     master="$(< "${CONF_DIR}/master.scss")"
-    [[ ! -z "$backend" ]] && {
+    [[ -n "$backend" ]] && {
         local bp
         bp="backends/${backend}.scss"
         master="${master/backend.scss/$bp}"
@@ -114,10 +124,10 @@ main() {
             out_file="${CONFIG_HOME}/BetterDiscord/themes/wal_discord.theme.css"
         }
     }
-    
+
     [[ $FIREFOX_CSS = true ]] && generate_firefox_css "$result"
     
-    if [[ ! -z "$out_file" ]]; then
+    if [[ -n "$out_file" ]]; then
 	    mkdir -p "$(dirname "$out_file")"
         printf "%s\\n" "$result" > "$out_file"
     else
