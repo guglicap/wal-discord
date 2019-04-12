@@ -54,17 +54,15 @@ setup() {
     cp -R "${repo_dir}/config/" "$CONF_DIR"
     ln -sf backends/wal.scss "${CONF_DIR}/backend.scss"
 
-    if [[ -r "$WAL_COLORS" ]] && [[ -r "$WPG_COLORS" ]]; then	    
-        if [[ "$WAL_COLORS" -ot "$WPG_COLORS" ]]; then
-           	ln -sf "$WAL_COLORS" "${CONF_DIR}/colors.scss"
-        else
-            ln -sf "$WPG_COLORS" "${CONF_DIR}/colors.scss"
-        fi
-    elif [[ -r "$WPG_COLORS" ]]; then
-        ln -sf "$WPG_COLORS" "${CONF_DIR}/colors.scss"
-    else
-        ln -sf "$WAL_COLORS" "${CONF_DIR}/colors.scss"
-    fi
+    local colors="$WAL_COLORS"
+    
+    # we assume we're using wpgtk if wal colors file doesn't exist
+    [[ ! -r "$WAL_COLORS" ]] && colors="$WPG_COLORS"
+    
+    # only returns true if both files exist
+    [[ "$WPG_COLORS" -nt "$WAL_COLORS" ]] && colors="$WPG_COLORS"
+    
+    ln -sf "$colors" "${CONF_DIR}/colors.scss"
 }
 
 generate_firefox_css() {    
