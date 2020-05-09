@@ -4,8 +4,8 @@
 
 $bg: $background;
 $bgDarker: mix($background, #000, 90%); // for sidebars and titlebars
-$colorUrgent: $color6; // for new messages notificatinons and the alike
-$colorAccent: $color1; // "encourages user interaction", I just copied from android colors
+$colorUrgent: $color3; // for new messages notificatinons and the alike
+$colorAccent: $color5; // "encourages user interaction", I just copied from android colors
 $fg: $foreground; // text color
 
 div[class^='membersWrap'], div[class*=' membersWrap']{
