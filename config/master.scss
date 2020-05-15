@@ -604,11 +604,17 @@
 .theme-dark .footer-3mqk7D {
   background-color: $bg !important;
 }
+
   // display of uploaded items
 .anchor-3Z-8Bb {
   color: $colorUrgent !important;
 }
-//  gif menu favourite tint
+
+//  gif menu
+.contentWrapper-2txmjs {
+  background-color: $bg !important;
+}
+  //  favourite tint
 .theme-dark .categoryFadeBlurple-1j72_A, .theme-light .categoryFadeBlurple-1j72_A {
   background-color: rgba($colorAccent, 0.8) !important;
 }
