@@ -51,7 +51,8 @@ setup() {
         printf "%s\\n" "Can't find needed setup folder: ${repo_dir/config}"
         exit 1
     }
-    cp -R "${repo_dir}/config/" "$CONF_DIR"
+    mkdir -p "$CONF_DIR"
+    cp -R "${repo_dir}/config/"* "$CONF_DIR"
     ln -sf backends/wal.scss "${CONF_DIR}/backend.scss"
 
     local colors="$WAL_COLORS"
