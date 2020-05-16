@@ -32,7 +32,10 @@
 //  connection screen
 .container-16j22k {
   background-color: $bgDarker !important;
-} 
+}
+.appMount-3lHmkl, body {
+  background-color: $bgDarker !important;
+}
 
 //  login screen
 .theme-dark.authBox-hW6HRx {
@@ -527,7 +530,7 @@
 }
 
 //  pop-out when clicking on user 
-//  header 
+  //  header 
 .headerPlaying-j0WQBV,
 .headerNormal-T_seeN {
   background-color: $colorAccent !important;
@@ -536,7 +539,7 @@
 .footer-1fjuF6 {
   background-color: $bgDarker !important;
 }
-//  send dm from popout 
+  //  send dm from popout 
 .quickMessage-1yeL4E {
   background-color: rgba($colorAccent, 0.1) !important;
 }
@@ -613,6 +616,20 @@
   background-color: $colorAccent !important;
 }
 
+//  new server menu
+.theme-light .action-1lSjCi {
+  background: rgba($bgDarker, 0.6) !important;
+}
+.header-3ZP1MY {
+  color: #FFF !important;
+}
+.colorStandard-2KCXvj {
+  color: #DCDDDE !important;
+}
+.sampleLink-KPFu3I {
+  color: $colorUrgent !important;
+}
+
 //  upload menu
 .theme-dark .uploadModal-2ifh8j {
   background-color: $bg !important;
@@ -676,4 +693,30 @@
 }
 .theme-dark .footer-3rDWdC {
   background-color: $bg !important;
+}
+
+//  public server browser
+  //  highlight
+.categoryPill-34fszg.selected-1dONk0 {
+  background-color: rgba($colorAccent, 0.6) !important;
+}   //  search panel
+.searchPage-3GKAdT .search-1iTphC {
+  background-color: rgba($bgDarker, 0.4) !important;
+}
+.searchPage-3GKAdT .search-1iTphC .searchBox-2_mAlO:focus, .searchPage-3GKAdT .search-1iTphC .searchBox-2_mAlO:focus-within {
+  border-color: rgba($colorAccent, 0.6) !important;
+}
+  //  language panel
+.css-1b86x2o-control {
+  background-color: $bgDarker !important;
+}
+.css-9wh895-control {
+  background-color: rgba($bgDarker, 0.4) !important;
+}
+.css-123uooi-menu {
+  background-color: $bgDarker !important;
+}
+  //  verified icon
+.verified-1eC5dy {
+  color: $colorUrgent !important;
 }
