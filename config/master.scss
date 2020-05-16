@@ -38,6 +38,7 @@
 .theme-dark.authBox-hW6HRx {
   background: $bg !important;
 }
+.appMount-3lHmkl 
 .lookFilled-1Gx00P.colorBrand-3pXr91 {
   background-color: $colorAccent !important;
 }
@@ -61,7 +62,7 @@
 }
   //  discord icon
 .wrapper-1BJsBx.selected-bZ3Lue .childWrapper-anI2G9, .wrapper-1BJsBx:hover .childWrapper-anI2G9 {
-  background-color: $colorUrgent !important;
+  background-color: $colorAccent !important;
 }
 .item-2hkk8m {
   background-color: $colorAccent !important;
@@ -278,6 +279,17 @@
     }
   }
 }
+    //  user mention fix
+.wrapper-3WhCwL {
+  color: rgba($colorUrgent, 0.8) !important;
+}
+   //  mentioned background
+.mentioned-xhSam7 {
+  background-color: rgba($colorUrgent, 0.1) !important;
+}
+.mentioned-xhSam7:before {
+  background-color: $colorUrgent !important;
+}
 
 //  users list  
 .members-1998pB {
@@ -364,6 +376,10 @@
       background-color: rgba($colorAccent, 0.6) !important;
     }
   }
+}
+  //  notification
+.iconBadge-qZ4Ksk {
+  background-color: $colorUrgent !important;
 }
 
 //  spinners 
