@@ -12,15 +12,66 @@
 }
 
 .theme-dark {
-  background-color: $bg !important;
+  --background-color: $bg !important;
+  --background-primary: $bg !important;
+  --background-secondary: $bg !important;
+  --background-secondary-alt: $bgDarker !important;
+  --background-tertiary: $bgDarker !important;
+  --background-accent: $colorAccent !important;
+  --background-floating: $bgDarker !important;
+  --text-link: $colorAccent !important;
+  --focus-primary: $colorUrgent !important;
+  --channeltextarea-background: $bg !important;
+  --activity-card-background: $bg !important;
+  --depreciated-store-bg: $bg !important;
+  --deprecated-quickswitcher-input-background: $bgDarker !important;
+  --deprecated-text-input-border-hover: $bgDarker !important;
+  --deprecated-text-input-border-disabled: $bgDarker !important;
+}
+
+//  connection screen
+.container-16j22k {
+  background-color: $bgDarker !important;
+}
+.appMount-3lHmkl, body {
+  background-color: $bgDarker !important;
+}
+
+//  login screen
+.theme-dark.authBox-hW6HRx {
+  background: $bg !important;
+}
+.appMount-3lHmkl 
+.lookFilled-1Gx00P.colorBrand-3pXr91 {
+  background-color: $colorAccent !important;
+}
+.lookLink-9FtZy-.colorBrand-3pXr91 {
+  color: $colorAccent !important;
+}
+.input-cIJ7To.focused-1mmYsC, .input-cIJ7To:focus {
+  border-color: $colorAccent !important;
+}
+//  private call
+.wrapper-2qzCYF.minimum-28Z35l {
+  background-color: rgba($bg, 0.8) !important;
+}
+.centerButton-3CaNcJ {
+  background: rgba($bg, 0.6);
 }
 
 //  channel list 
 .container-PNkimc {
   background-color: $bgDarker !important;
 }
+  //  discord icon
+.wrapper-1BJsBx.selected-bZ3Lue .childWrapper-anI2G9, .wrapper-1BJsBx:hover .childWrapper-anI2G9 {
+  background-color: $colorAccent !important;
+}
+.item-2hkk8m {
+  background-color: $colorAccent !important;
+}
 
-//   make '#' in front of channels match text color 
+//  make '#' in front of channels match text color 
 .foreground-2W-aJk {
   fill: $colorUrgent !important;
 }
@@ -29,6 +80,9 @@
 .nameUnreadText-DfkrI4,
 .nameUnreadVoice-EVo-wI {
   color: $colorUrgent !important;
+}
+.numberBadge-2s8kKX {
+ background-color: $colorUrgent !important;
 }
 
 //  default channel style 
@@ -95,7 +149,7 @@
   background-color: $bg !important;
 }
 
-// input form background
+//  input form background
 .inner-zqa7da {
   background-color: rgba($colorAccent, 0.1) !important;
 }
@@ -103,6 +157,26 @@
 //  attachment button color 
 .attachButtonPlus-rUdX-B {
   fill: $colorAccent !important;
+}
+//  nitro
+  //  nitro page
+.scroller-9moviB {
+  background-color: $bg !important;
+}
+  //  nitro gift button color
+.theme-dark .lookFilled-1Gx00P.colorPrimary-3b3xI6 {
+  background-color: $bgDarker !important;
+}
+  //  nitro gift popup
+.theme-dark .root-1gCeng {
+  background-color: $bg !important;
+}
+.theme-dark .footer-3rDWdC {
+  background-color: $bg !important;
+}
+.lookOutlined-3sRXeN.colorBrand-3pXr91 {
+  color: rgba($colorAccent, 0.8) !important;
+  border-color: rgba($colorAccent, 0.2) !important;
 }
 
 //  messages - form separator 
@@ -149,6 +223,20 @@
     }
   }  
 }
+.isUnread-3Ef-o9 {
+  border-color: $colorUrgent !important;
+}
+.unreadPill-2HyYtt {
+  background-color: $colorUrgent !important;
+}
+.unreadPillCapStroke-7rkHbg {
+  color: $colorUrgent !important;
+  fill: $colorUrgent !important;
+}
+  //  reaction menu
+.wrapper-2aW0bm {
+  background-color: rgba($bg, 0.8) !important;
+}
 
 //  bar displayed at the top of the messages when there are unread ones 
 .new-messages-bar,
@@ -194,14 +282,34 @@
     }
   }
 }
+    //  user mention fix
+.wrapper-3WhCwL {
+  color: rgba($colorUrgent, 0.8) !important;
+}
+   //  mentioned background
+.mentioned-xhSam7 {
+  background-color: rgba($colorUrgent, 0.1) !important;
+}
+.mentioned-xhSam7:before {
+  background-color: $colorUrgent !important;
+}
+
 //  users list  
 .members-1998pB {
   background-color: $bgDarker !important;
 }
+.sidebar-2K8pFh {
+  background: $bg !important;
+}
+.selected-aXhQR6 .layout-2DM8Md {
+  background-color: rgba($colorAccent, 0.2) !important; 
+}
+
 //  user typing message 
 .typing-2GQL18 {
   background-color: $bg !important;
 }
+
 //  title bar 
 .title-3qD0b- {
   background-color: $bgDarker !important;
@@ -209,6 +317,10 @@
     background-color: rgba($colorAccent, 0.2) !important;
   }
 }
+.container-1r6BKw.themed-ANHk51 {
+  background: $bg !important;
+}
+
 //  server list 
 .guilds-wrapper,
 .guildsWrapper-5TJh6A,
@@ -221,13 +333,11 @@
   background: inherit !important;
   color: rgba($colorAccent, 0.4) !important;
 }
-
 .guild .guild-inner,
 .guild-1EfMGQ .guild-inner,
 .container-2td-dC .wrapper-2lTRaf {
   background: inherit !important;
 }
-
 .guild.unread:before,
 .guild-1EfMGQ.unread-qLkInr:before,
 .wrapper-232cHJ {
@@ -270,6 +380,10 @@
     }
   }
 }
+  //  notification
+.iconBadge-qZ4Ksk {
+  background-color: $colorUrgent !important;
+}
 
 //  spinners 
 .spinner-wandering-cubes .spinner-item {
@@ -282,7 +396,7 @@
 .scrollerThemed-2oenus.themedWithTrack-q8E3vB .scroller-2FKFPG {
   &::-webkit-scrollbar-thumb,
   &::-webkit-scrollbar-track-piece {
-    border-color: rgba($colorAccent, 0.4) !important;
+    border-color: $bg !important;
   }
   &::-webkit-scrollbar-thumb {
     background-color: mix($bg, $colorAccent, 75%) !important;
@@ -307,15 +421,19 @@
 }
 
 //  DMs 
-//  box around selected chat 
+  //  box around selected chat 
 .channel.selected a,
 .channel-2QD9_O.selected-1HYmZZ a {
   background: rgba($colorAccent, 0.2) !important;
 }
-//  box on hover 
+  //  box on hover 
 .channel:hover a,
 .channel-2QD9_O:hover a {
   background: rgba($colorAccent, 0.1) !important;
+}
+  // create dm popup
+.theme-dark .modal-yWgWj- {
+  background-color: $bg !important;
 }
 
 //  friends tab 
@@ -347,6 +465,14 @@
     }
   }
 }
+
+.scrollerThemed-2oenus.themeDark-2cjlUp .scroller-2FKFPG, .theme-dark .scrollerWrap-2lJEkd .scroller-2FKFPG, .theme-light .scrollerThemed-2oenus.themeDark-2cjlUp .scroller-2FKFPG {
+  background: $bg !important;
+}
+.theme-dark .container-1D34oG {
+  background-color: rgba($bg, 0.8) !important;
+}
+
 //  quick switcher (ctrl + k) 
 .quickswitcher-3JagVE {
   background-color: $bg !important;
@@ -363,6 +489,7 @@
     box-shadow: inset 0 -4px 0 rgba($colorAccent, 0.6) !important;
   }
 }
+
 //  search popup with help 
 .searchPopout-1vUlP3 {
   background-color: $bgDarker !important;
@@ -370,6 +497,28 @@
   .option-96V44q.selected-rZcOL- {
     background-color: rgba($colorAccent, 0.1) !important;
   }
+}
+.theme-dark .container-3ayLPN {
+  background-color: $bg !important;
+}
+.theme-dark .focused-2bY0OD {
+  background-color: $bgDarker !important;
+}
+.theme-dark .dim-1l4L4y span {
+  background-color: $bg !important;
+}
+.theme-dark .option-96V44q.selected-rZcOL- {
+  background-color: $bgDarker
+}
+.theme-dark .option-96V44q:after {
+  background: linear-gradient(90deg,rgba(54,57,63,0),$bg 80%)
+}
+.theme-dark .option-96V44q.selected-rZcOL-:after {
+  background: linear-gradient(90deg,rgba(54,57,63,0),$bgDarker 80%)
+}
+.theme-dark .elevationBorderHigh-2WYJ09 {
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }
 //  auto-complete popup when mentioning users 
 .autocomplete-1vrmpx {
@@ -381,7 +530,7 @@
 }
 
 //  pop-out when clicking on user 
-//  header 
+  //  header 
 .headerPlaying-j0WQBV,
 .headerNormal-T_seeN {
   background-color: $colorAccent !important;
@@ -390,7 +539,7 @@
 .footer-1fjuF6 {
   background-color: $bgDarker !important;
 }
-//  send dm from popout 
+  //  send dm from popout 
 .quickMessage-1yeL4E {
   background-color: rgba($colorAccent, 0.1) !important;
 }
@@ -454,4 +603,120 @@
   .action-buttons .jump-button {
     background-color: rgba($colorAccent, 0.8) !important;
   }
+}
+
+//  context menu
+.contextMenu-HLZMGh {
+  background-color: rgba($bgDarker, 0.6) !important;
+}
+.itemGroup-1tL0uz {
+  border-color: rgba($bg, 0.2) !important;
+}
+.colorDefault-2K3EoJ.focused-3afm-j, .colorDefault-2K3EoJ:hover:not(.hideInteraction-1iHO1O) {
+  background-color: $colorAccent !important;
+}
+
+//  new server menu
+.theme-light .action-1lSjCi {
+  background: rgba($bgDarker, 0.6) !important;
+}
+.header-3ZP1MY {
+  color: #FFF !important;
+}
+.colorStandard-2KCXvj {
+  color: #DCDDDE !important;
+}
+.sampleLink-KPFu3I {
+  color: $colorUrgent !important;
+}
+
+//  upload menu
+.theme-dark .uploadModal-2ifh8j {
+  background-color: $bg !important;
+}
+.theme-dark .footer-3mqk7D {
+  background-color: $bg !important;
+}
+
+  // display of uploaded items
+.anchor-3Z-8Bb {
+  color: $colorUrgent !important;
+}
+
+//  gif menu
+.contentWrapper-2txmjs {
+  background-color: $bg !important;
+}
+  //  favourite tint
+.theme-dark .categoryFadeBlurple-1j72_A, .theme-light .categoryFadeBlurple-1j72_A {
+  background-color: rgba($colorAccent, 0.8) !important;
+}
+
+//  toolbar
+.toolbar-2bjZV7 {
+  background-color: rgba($bg, 0.4) !important;
+}
+
+//  tooltips
+.theme-dark .tooltipBrand-g03Nz8, .theme-light .tooltipBrand-g03Nz8 {
+  background-color: rgba($colorAccent, 0.8) !important;
+}
+.introductionAction-M1r6AX {
+  color: rgba($colorAccent, 0.8) !important;
+}
+.content-3O0wBS {
+  background: rgba($bg, 0.8) !important;
+}
+.content-3O0wBS .button-3zdF3z {
+  color: rgba($bg, 0.8) !important;
+}
+.theme-dark .tooltipBrand-g03Nz8 .tooltipPointer-3ZfirK, .theme-light .tooltipBrand-g03Nz8 .tooltipPointer-3ZfirK {
+  border-top-color: rgba($colorAccent, 0.8) !important;
+}
+
+//  settings menu
+.contentRegionScroller-26nc1e {
+  background-color: $bgDarker !important;
+}
+.sidebarRegionScroller-3MXcoP {
+  background: rgba($bgDarker, 0.8) !important;
+}
+.cardPrimary-1Hv-to, .cardPrimaryEditable-3KtE4g {
+  border-color: rgba($bg, 0.4) !important;
+}
+.themeDefault-24hCdX.valueChecked-m-4IJZ {
+  background-color: $colorAccent !important;
+}
+.theme-dark .codeRedemptionRedirect-1wVR4b {
+  background-color: rgba($bgDarker, 0.8) !important;
+  border-color: rgba($bgDarker, 0.4) !important;
+}
+.theme-dark .footer-3rDWdC {
+  background-color: $bg !important;
+}
+
+//  public server browser
+  //  highlight
+.categoryPill-34fszg.selected-1dONk0 {
+  background-color: rgba($colorAccent, 0.6) !important;
+}   //  search panel
+.searchPage-3GKAdT .search-1iTphC {
+  background-color: rgba($bgDarker, 0.4) !important;
+}
+.searchPage-3GKAdT .search-1iTphC .searchBox-2_mAlO:focus, .searchPage-3GKAdT .search-1iTphC .searchBox-2_mAlO:focus-within {
+  border-color: rgba($colorAccent, 0.6) !important;
+}
+  //  language panel
+.css-1b86x2o-control {
+  background-color: $bgDarker !important;
+}
+.css-9wh895-control {
+  background-color: rgba($bgDarker, 0.4) !important;
+}
+.css-123uooi-menu {
+  background-color: $bgDarker !important;
+}
+  //  verified icon
+.verified-1eC5dy {
+  color: $colorUrgent !important;
 }
