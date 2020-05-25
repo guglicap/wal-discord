@@ -21,5 +21,5 @@ Supports BeautifulDiscord and BetterDiscord.
 git clone https://github.com/guglicap/wal-discord.git
 chmod +x ./wal-discord/wal-discord
 ln -s "`pwd`/wal-discord/wal-discord" <directory in your $PATH>
-wal-discord
+wal-discord; beautifuldiscord --css ~/.cache/wal-discord/style.css
 ```
