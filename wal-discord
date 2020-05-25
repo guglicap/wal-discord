@@ -6,8 +6,7 @@
 CONFIG_HOME="${XDG_CONFIG_HOME:-${HOME}/.config}"
 CONF_DIR="${CONFIG_HOME}/wal-discord"
 OUT_DIR="${HOME}/.cache/wal-discord"
-WAL_COLORS="${HOME}/.cache/wal/colors.scss"
-WPG_COLORS="${HOME}/.config/wpg/formats/colors.scss"
+COLORS_FILE="${HOME}/.cache/wal/colors.scss"
 FORCE_UPDATE=false
 # generate BetterDiscord theme
 BD_THEME=false
@@ -54,16 +53,7 @@ setup() {
     mkdir -p "$CONF_DIR"
     cp -R "${repo_dir}/config/"* "$CONF_DIR"
     ln -sf backends/wal.scss "${CONF_DIR}/backend.scss"
-
-    local colors="$WAL_COLORS"
-    
-    # we assume we're using wpgtk if wal colors file doesn't exist
-    [[ ! -r "$WAL_COLORS" ]] && colors="$WPG_COLORS"
-    
-    # only returns true if both files exist
-    [[ "$WPG_COLORS" -nt "$WAL_COLORS" ]] && colors="$WPG_COLORS"
-    
-    ln -sf "$colors" "${CONF_DIR}/colors.scss"
+    ln -sf "$COLORS_FILE" "${CONF_DIR}/colors.scss"
 }
 
 generate_firefox_css() {    
