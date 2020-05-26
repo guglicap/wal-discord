@@ -7,7 +7,6 @@ CONFIG_HOME="${XDG_CONFIG_HOME:-${HOME}/.config}"
 CONF_DIR="${CONFIG_HOME}/wal-discord"
 OUT_DIR="${HOME}/.cache/wal-discord"
 COLORS_FILE="${HOME}/.cache/wal/colors.scss"
-FORCE_UPDATE=false
 # generate BetterDiscord theme
 BD_THEME=false
 BD_THEME_HEADER='//META{"name":"wal-discord","description":"Generated based on pywal colors","author":"wal-discord","version":"1.0"}*//'
@@ -15,6 +14,7 @@ BD_THEME_HEADER='//META{"name":"wal-discord","description":"Generated based on p
 FIREFOX_CSS=false
 backend=""
 out_file="${OUT_DIR}/style.css"
+version="0.0.1"
 
 usage() {
     printf "%s\\n" "\
@@ -30,7 +30,21 @@ usage() {
         -x  Generate firefox userContent.css
         -u  Forces wal-discord update.\
         "
-    exit 1
+    exit 0
+}
+
+version() {
+    local css_version
+    css_version="not found"
+    [[ -r "${CONF_DIR}/master.scss" ]] && {
+        css_version="$(grep -E -m 1 version "${CONF_DIR}/master.scss")"
+        css_version="$(grep -oP '\d+\.\d+\.\d+' <<< "$css_version")"
+    }
+    printf "%s\\n" "\
+    script version: "${version}"
+    css version: "${css_version}"\
+    "
+    exit 0
 }
 
 set_backend() {
@@ -51,7 +65,8 @@ setup() {
         exit 1
     }
     mkdir -p "$CONF_DIR"
-    cp -R "${repo_dir}/config/"* "$CONF_DIR"
+    ln -sf "${repo_dir}/config/"* "$CONF_DIR"
+    # symlinks are relative, so "backends/wal.scss" actually refers to the backends folder in ${CONF_DIR}
     ln -sf backends/wal.scss "${CONF_DIR}/backend.scss"
     ln -sf "$COLORS_FILE" "${CONF_DIR}/colors.scss"
 }
@@ -74,20 +89,19 @@ generate_firefox_css() {
 
 init() {
     OPTIND=1
-    while getopts 'hsutxb:o:' opt; do
+    while getopts 'hsutxvb:o:' opt; do
         case "$opt" in
             h) usage;;
             s) out_file="";;
             o) out_file="$OPTARG" ;;
             b) set_backend "$OPTARG" ;;
-            u) FORCE_UPDATE=true ;;
+            u) setup ;;
             t) BD_THEME=true ;;
             x) FIREFOX_CSS=true ;;
+            v) version ;;
             *) ;;
         esac
     done
-    
-    [[ ! -d "$CONF_DIR" || $FORCE_UPDATE = true ]] && setup
 }
 
 main() {
@@ -97,6 +111,8 @@ main() {
         printf "%s\\n" "sassc is not installed and is required"
         exit 1
     }
+
+    [[ ! -d "$CONF_DIR" ]] && setup
     
     local master
     master="$(< "${CONF_DIR}/master.scss")"
