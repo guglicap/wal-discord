@@ -1,6 +1,12 @@
 @import 'colors.scss';
 $bg: $background;
-$bgDarker: mix($background, #000, 90%); // for sidebars and titlebars
-$colorUrgent: $color3; // for new messages notificatinons and the alike
-$colorAccent: $color5; // "encourages user interaction", I just copied from android colors
+$bgDarker: mix($background, #000, 90%); // for secondary menus and variation
+$colorUrgent: $color3; // for new messages, notifications and urgent prompts
+$colorAccent: $color5; // primary colour for accenting details
+$colorHighlight: $color6; // for highlighting and complementing the accent color
 $fg: $foreground; // text color
+  
+// additional colors for syntax highlight variation
+$syntaxOne: $color1;
+$syntaxTwo: $color2;
+$syntaxThree: $color4;

@@ -1,5 +1,5 @@
 /* 
- * @version 0.0.1
+ * @version 0.0.2
 */
 
 @import "backend.scss";
@@ -23,7 +23,7 @@
   --background-tertiary: $bgDarker !important;
   --background-accent: $colorAccent !important;
   --background-floating: $bgDarker !important;
-  --text-link: $colorAccent !important;
+  --text-link: $colorHighlight !important;
   --focus-primary: $colorUrgent !important;
   --channeltextarea-background: $bg !important;
   --activity-card-background: $bg !important;
@@ -131,7 +131,7 @@
 //  voice connected 
 .container-1UB9sr {
   background-color: $bgDarker !important;
-  border-bottom: 1px solid rgba($colorAccent, 0.1) !important;
+  border-bottom: 1px solid rgba($colorHighlight, 0.1) !important;
 }
 
 //  avatar container 
@@ -187,7 +187,7 @@
 .chat form,
 .chat-3bRxxu form {
   background-color: $bg !important;
-  box-shadow: 0 -1px 0 rgba($colorUrgent, 0.1) !important;
+  box-shadow: 0 -1px 0 rgba($colorHighlight, 0.1) !important;
 }
 
 //  "Load More Messages" button 
@@ -198,12 +198,12 @@
 }
 
 .jump-to-present-bar {
-  background-color: rgba($colorAccent, 0.6) !important;
+  background-color: rgba($colorHighlight, 0.6) !important;
 }
 
 //  edit message box 
 .inner-zqa7da {
-  background-color: rgba($colorAccent, 0.1) !important;
+  background-color: rgba($colorHighlight, 0.1) !important;
 }
 
 //  divider is what displays the date for older messages 
@@ -247,6 +247,11 @@
 .newMessagesBar-mujexs {
   background-color: rgba($colorUrgent, 0.9) !important;
 }
+  // date fix
+.isUnread-3Ef-o9 .content-1o0f9g {
+  color: $fg !important;
+  background-color: $colorUrgent !important;
+}
 
 //  message container 
 .messages-wrapper,
@@ -274,7 +279,7 @@
 
   //  embed cards 
   .embedInner-1-fpTo {
-    background-color: mix($bg, $colorAccent, 90%) !important;
+    background-color: mix($bg, $colorHighlight, 90%) !important;
   }
 
   //  message with user mention 
@@ -352,7 +357,7 @@
 .friends-online,
 .friendsOnline-_wi_fM,
 .friendsOnline-2JkivW {
-  color: $colorAccent !important;
+  color: $colorHighlight !important;
 }
 
 //  server menu 
@@ -380,7 +385,7 @@
     background-color: $bg !important;
     //  jump 
     .actionButtons-1sUUug .jumpButton-3DTcS_ {
-      background-color: rgba($colorAccent, 0.6) !important;
+      background-color: rgba($colorHighlight, 0.6) !important;
     }
   }
 }
@@ -453,18 +458,18 @@
     background-color: $bg !important;
     .friends-row:hover,
     .friendsRow-2yicud:hover {
-      background-color: rgba($colorAccent, 0.1) !important;
+      background-color: rgba($colorHighlight, 0.1) !important;
     }
     .friends-row,
     .friendsRow-2yicud {
       .friends-column-actions .friends-action {
-        background-color: rgba($colorAccent, 0.1) !important;
+        background-color: rgba($colorHighlight, 0.1) !important;
       }
     }
     .friends-row,
     .friendsRow-2yicud {
       .friends-column-actions .friends-action:hover {
-        background-color: rgba($colorAccent, 0.2) !important;
+        background-color: rgba($colorHighlight, 0.2) !important;
       }
     }
   }
@@ -529,7 +534,7 @@
   background-color: $bgDarker !important;
   //  on hover 
   .selectorSelected-1_M1WV {
-    background-color: rgba($colorAccent, 0.1) !important;
+    background-color: rgba($colorHighlight, 0.1) !important;
   }
 }
 
@@ -592,16 +597,16 @@
       ) !important;
     }
     &.expanded .search-result-message.hit {
-      background-color: $background !important;
-      border-bottom: 2px solid $background !important;
-      border-top: 2px solid $background !important;
+      background-color: $bg !important;
+      border-bottom: 2px solid $bg !important;
+      border-top: 2px solid $bg !important;
     }
     .search-result-message.hit {
-      border: 2px solid $background !important;
+      border: 2px solid $bg !important;
     }
     .hit {
-      background-color: $background !important;
-      box-shadow: 0 0 10px 6px $background !important;
+      background-color: $bg !important;
+      box-shadow: 0 0 10px 6px $bg !important;
     }
   }
   .action-buttons .jump-button {
@@ -617,7 +622,7 @@
   border-color: rgba($bg, 0.2) !important;
 }
 .colorDefault-2K3EoJ.focused-3afm-j, .colorDefault-2K3EoJ:hover:not(.hideInteraction-1iHO1O) {
-  background-color: $colorAccent !important;
+  background-color: $colorHighlight !important;
 }
 
 //  new server menu
@@ -631,7 +636,7 @@
   color: #DCDDDE !important;
 }
 .sampleLink-KPFu3I {
-  color: $colorUrgent !important;
+  color: $colorHighlight !important;
 }
 
 //  upload menu
@@ -644,7 +649,7 @@
 
   // display of uploaded items
 .anchor-3Z-8Bb {
-  color: $colorUrgent !important;
+  color: $colorHighlight !important;
 }
 
 //  gif menu
@@ -653,7 +658,7 @@
 }
   //  favourite tint
 .theme-dark .categoryFadeBlurple-1j72_A, .theme-light .categoryFadeBlurple-1j72_A {
-  background-color: rgba($colorAccent, 0.8) !important;
+  background-color: rgba($colorHighlight, 0.8) !important;
 }
 
 //  toolbar
@@ -702,13 +707,13 @@
 //  public server browser
   //  highlight
 .categoryPill-34fszg.selected-1dONk0 {
-  background-color: rgba($colorAccent, 0.6) !important;
+  background-color: rgba($colorHighlight, 0.6) !important;
 }   //  search panel
 .searchPage-3GKAdT .search-1iTphC {
   background-color: rgba($bgDarker, 0.4) !important;
 }
 .searchPage-3GKAdT .search-1iTphC .searchBox-2_mAlO:focus, .searchPage-3GKAdT .search-1iTphC .searchBox-2_mAlO:focus-within {
-  border-color: rgba($colorAccent, 0.6) !important;
+  border-color: rgba($colorHighlight, 0.6) !important;
 }
   //  language panel
 .css-1b86x2o-control {
@@ -722,5 +727,28 @@
 }
   //  verified icon
 .verified-1eC5dy {
+  color: $colorHighlight !important;
+}
+
+// Syntax Highlighting
+.hljs-bullet, .hljs-link, .hljs-meta, .hljs-meta .hljs-keyword, .hljs-selector-attr, .hljs-selector-pseudo, .hljs-subst, .hljs-symbol {
+  color: $syntaxOne !important;
+}
+.hljs-built_in, .hljs-deletion {
   color: $colorUrgent !important;
+}
+.hljs-addition, .hljs-keyword, .hljs-selector-tag {
+  color: $syntaxTwo !important;
+}
+.hljs-attr, .hljs-attribute, .hljs-class .hljs-title, .hljs-template-variable, .hljs-type, .hljs-variable {
+  color: $syntaxThree !important;
+}
+.hljs-doctag, .hljs-literal, .hljs-meta .hljs-meta-string, .hljs-number, .hljs-regexp, .hljs-string {
+  color: $colorAccent !important;
+}
+.hljs-name, .hljs-section, .hljs-selector-class, .hljs-selector-id, .hljs-title {
+  color: $colorHighlight !important;
+}
+.codeBlockLang-O_f4hr {
+  color: rgba($syntaxOne, 0.7) !important;
 }
